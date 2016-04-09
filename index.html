@@ -1,0 +1,414 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width" />
+<title>Unit Converter</title>
+<!--jquery-->
+<link href="jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css"/>
+<script src="jquery-1.6.4.min.js" type="text/javascript"></script>
+<script src="jquery.mobile-1.0.min.js" type="text/javascript"></script>
+
+<!--Add your js files here...-->
+<script type="text/javascript" src="lengths.js"></script>
+<script type="text/javascript" src="weights.js"></script>
+<script type="text/javascript" src="times.js"></script>
+<script type="text/javascript" src="volumes.js"></script>
+<script type="text/javascript" src="temps.js"></script>
+<script type="text/javascript" src="nums.js"></script>
+<script type="text/javascript" src="mems.js"></script>
+<script type="text/javascript" src="areas.js"></script>
+</head> 
+<style type="text/css">
+body
+{
+	/*background: url(128.jpg);*/
+    background-repeat:repeat;
+    background-position:relative;
+    background-attachment:tile;
+    background-size:default;
+}
+.ui-page {
+    background-color: gray;
+}
+.ui-content{
+    background: transparent;
+}
+.ui-listview .ui-li
+{
+	height:60px;
+}
+.ui-listview .ui-li-icon
+{
+	margin-left:-5px;
+}
+@media screen and (min-width: 240px) and (max-width: 320px) 
+{
+	html
+	{
+		font-size: 50%;
+	}
+}
+</style>
+
+<body> 
+<div class="page1" id="page1" style="background-image:url(stripes.jpg)" data-role="page" data-theme="d">
+	<div data-role="header"><img src="arrows.png" width="45" height="45" style="position:absolute;"><div style="float:right; padding-right:10px; padding-top:5px;"><a href="#dialog" data-role="button" data-icon="info" data-iconpos="notext"></a></div>
+		<h1>Unit Converter</h1>
+	 	</div>
+	<div data-role="content">	
+		<ul  data-inset="true" data-role="listview" data-icon="forward">
+			<li><a href="#page2"><h2>Length</h2><img src="ruler-xxl.png" class="ui-li-icon"></a></li>
+            <li><a href="#page3"><h2>Weight</h2><img src="weight-icon.png" class="ui-li-icon"></a></li>
+			<li><a href="#page4"><h2>Time</h2><img src="time-icon.png" class="ui-li-icon"></a></li>
+            <li><a href="#page5"><h2>Volume</h2><img src="volume-icon.png" class="ui-li-icon" ></a></li>
+            <li><a href="#page6"><h2>Temperature</h2><img src="temp-icon.png" class="ui-li-icon"></a></li>
+            <li><a href="#page7"><h2>Number</h2><img src="hex_icon.png" class="ui-li-icon"></a></li>
+			<li><a href="#page8"><h2>Memory</h2><img src="memory-icon.png"class="ui-li-icon" ></a></li>
+            <li><a href="#page9"><h2>Currency</h2><img src="currency-icon.png"class="ui-li-icon"></a></li>
+            <li><a href="#page10"><h2>Area</h2><img src="area-icon.png"class="ui-li-icon"></a></li>
+		</ul>		
+	</div>
+	<!--<div data-role="footer">
+		<h4>Page Footer</h4>-->
+</div>
+</div>
+
+<div data-role="page" id="page2">
+
+	<div data-role="header"><a href="#page1" data-role="button" data-icon="arrow-l" data-direction="reverse" data-transition="slide">Back</a>
+		<h1>Convert Length</h1>
+	</div>
+	<div data-role="content">
+    
+      <div data-role="fieldcontain">
+        <label for="textinput"><strong>Enter:</strong></label>
+        <input type="text" name="textinput" id="textinput" value="0" onKeyUp="calcLen()"/>
+        </div>
+      <div data-role="fieldcontain">
+        <label for="resultText"><strong>Result:</strong></label>
+        <input type="text" name="resultText" id="resultText" value="0"/>
+      </div>
+      <div data-role="fieldcontain">
+        <label for="selectmenu" class="select"><strong>From:</strong></label>
+        <select name="selectmenu" class="ui-bar-b" id="selectmenu" onChange="l_from_change()">
+          <option value="in">Inches</option>
+          <option value="ft">Feet</option>
+          <option value="yd">Yards</option>
+          <option value="mi">Miles</option>
+          <option value="mm">Millimeters</option>
+          <option value="cm">Centimeters</option>
+          <option value="m">Meters</option>
+          <option value="km">Kilometers</option>
+        </select>
+      </div>
+      <div data-role="fieldcontain">
+        <label for="selectmenu2" class="select"><strong>To:</strong></label>
+        <select name="selectmenu2" class="ui-bar-b" id="selectmenu2" onChange="l_to_change()">
+          <option value="in">Inches</option>
+          <option value="ft">Feet</option>
+          <option value="yd">Yards</option>
+          <option value="mi">Miles</option>
+          <option value="mm">Millimeters</option>
+          <option value="cm">Centimeters</option>
+          <option value="m">Meters</option>
+          <option value="km">Kilometers</option>
+        </select>
+      </div>
+	</div>
+</div>
+
+<div data-role="page" id="page3">
+	<div data-role="header"><a href="#page1" data-role="button" data-icon="arrow-l" data-direction="reverse" data-transition="slide">Back</a>
+    
+		<h1>Convert Weight</h1>
+	</div>
+	<div data-role="content">
+      <div data-role="fieldcontain">
+        <label for="textinput2"><strong>Enter:</strong></label>
+        <input type="text" name="textinput2" id="textinput2" value="0" onKeyUp="calcMass()" />
+        </div>
+      <div data-role="fieldcontain">
+        <label for="resultText2"><strong>Result:</strong></label>
+        <input type="text" name="resultText2" id="resultText2" value="0"/>
+      </div>
+      	      <div data-role="fieldcontain">
+        <label for="selectmenu3" class="select"><strong>From:</strong></label>
+        <select name="selectmenu3" class="ui-bar-b" id="selectmenu3" onChange="w_from_change()">
+          <option value="kg">Kilograms</option>
+          <option value="gr">Grams</option>
+          <option value="mg">Milligrams</option>
+          <option value="oz">Ounces</option>
+          <option value="lb">Pounds</option>
+          <option value="ut">US Ton</option>
+          <option value="mt">Metric Tonnes</option>
+        </select>
+      </div>
+      <div data-role="fieldcontain">
+        <label for="selectmenu4" class="select"><strong>To:</strong></label>
+        <select name="selectmenu4" class="ui-bar-b" id="selectmenu4" onChange="w_to_change()">
+          <option value="kg">Kilograms</option>
+          <option value="gr">Grams</option>
+          <option value="mg">Milligrams</option>
+          <option value="oz">Ounces</option>
+          <option value="lb">Pounds</option>
+          <option value="ut">US Ton</option>
+          <option value="mt">Metric Tonnes</option>
+        </select>
+      </div>
+	</div>
+</div>
+
+<div data-role="page" id="page4">
+	<div data-role="header"><a href="#page1" data-role="button" data-icon="arrow-l" data-direction="reverse" data-transition="slide">Back</a>
+		<h1>Convert Time</h1>
+	</div>
+	<div data-role="content">	
+		<div data-role="fieldcontain">
+        <label for="textinput3"><strong>Enter:</strong></label>
+        <input type="text" name="textinput3" id="textinput3" value="0" onKeyUp="calcTime()" />
+        </div>
+      <div data-role="fieldcontain">
+        <label for="resultText3"><strong>Result:</strong></label>
+        <input type="text" name="resultText3" id="resultText3" value="0"/>
+      </div>
+      	      <div data-role="fieldcontain">
+        <label for="selectmenu5" class="select"><strong>From:</strong></label>
+        <select name="selectmenu5" class="ui-bar-b" id="selectmenu5" onChange="t_from_change()">
+          <option value="mins">Minutes</option>
+          <option value="hrs">Hours</option>
+          <option value="secs">Seconds</option>
+          <option value="ms">Milliseconds</option>
+          <option value="ns">Nanoseconds</option>
+          <option value="da">Days</option>
+          <option value="wk">Weeks</option>
+          <option value="mo">Months</option>
+          <option value="yr">Years</option>
+        </select>
+      </div>
+      <div data-role="fieldcontain">
+        <label for="selectmenu6" class="select"><strong>To:</strong></label>
+        <select name="selectmenu6" class="ui-bar-b" id="selectmenu6" onChange="t_to_change()">
+          <option value="mins">Minutes</option>
+          <option value="hrs">Hours</option>
+          <option value="secs">Seconds</option>
+          <option value="ms">Milliseconds</option>
+          <option value="ns">Nanoseconds</option>
+          <option value="da">Days</option>
+          <option value="wk">Weeks</option>
+          <option value="mo">Months</option>
+          <option value="yr">Years</option>
+        </select>
+      </div>		
+	</div>
+</div>
+    
+<div data-role="page" id="page5">
+	<div data-role="header"><a href="#page1" data-role="button" data-icon="arrow-l" data-direction="reverse" data-transition="slide">Back</a>
+		<h1>Convert Volume</h1>
+	</div>
+	<div data-role="content">	
+	<div data-role="fieldcontain">
+        <label for="textinput4"><strong>Enter:</strong></label>
+        <input type="text" name="textinput4" id="textinput4" value="0" onKeyUp="calcVol()"/>
+        </div>
+      <div data-role="fieldcontain">
+        <label for="resultText4"><strong>Result:</strong></label>
+        <input type="text" name="resultText4" id="resultText4" value="0"/>
+      </div>
+      	      <div data-role="fieldcontain">
+        <label for="selectmenu7" class="select"><strong>From:</strong></label>
+        <select name="selectmenu7" class="ui-bar-b" id="selectmenu7" onChange="v_from_change()">
+          <option value="ls">Liters</option>
+          <option value="cm">Cubic Meter</option>
+          <option value="ci">Cubic Inch</option>
+          <option value="cf">Cubic Foot</option>
+          <option value="pi">Pints</option>
+          <option value="qu">Quarts</option>
+          <option value="ga">Gallons</option>
+        </select>
+      </div>
+      <div data-role="fieldcontain">
+        <label for="selectmenu8" class="select"><strong>To:</strong></label>
+        <select name="selectmenu8" class="ui-bar-b" id="selectmenu8" onChange="v_to_change()">
+          <option value="ls">Liters</option>
+          <option value="cm">Cubic Meter</option>
+          <option value="ci">Cubic Inch</option>
+          <option value="cf">Cubic Foot</option>
+          <option value="pi">Pints</option>
+          <option value="qu">Quarts</option>
+          <option value="ga">Gallons</option>
+        </select>
+      </div>	
+	</div>
+ </div>
+    
+<div data-role="page" id="page6">
+	<div data-role="header"><a href="#page1" data-role="button" data-icon="arrow-l" data-direction="reverse" data-transition="slide">Back</a>
+		<h1>Convert Temperature</h1>
+	</div>
+	<div data-role="content">	
+	<div data-role="fieldcontain">
+        <label for="textinput5"><strong>Enter:</strong></label>
+        <input type="text" name="textinput5" id="textinput5" value="0" onKeyUp="calcTemp()"/>
+        </div>
+      <div data-role="fieldcontain">
+        <label for="resultText5"><strong>Result:</strong></label>
+        <input type="text" name="resultText5" id="resultText5" value="0"/>
+      </div>
+      	      <div data-role="fieldcontain">
+        <label for="selectmenu9" class="select"><strong>From:</strong></label>
+        <select name="selectmenu9" class="ui-bar-b" id="selectmenu9" onChange="temp_from_change()">
+          <option value="ce">Celsius</option>
+          <option value="fa">Fahrenheit</option>
+          <option value="ke">Kelvin</option>
+        </select>
+      </div>
+      <div data-role="fieldcontain">
+        <label for="selectmenu10" class="select"><strong>To:</strong></label>
+        <select name="selectmenu10" class="ui-bar-b" id="selectmenu10" onChange="temp_to_change()">
+          <option value="ce">Celsius</option>
+          <option value="fa">Fahrenheit</option>
+          <option value="ke">Kelvin</option>
+        </select>
+      </div>		
+	</div>
+</div>
+
+<div data-role="page" id="page7">
+	<div data-role="header"><a href="#page1" data-role="button" data-icon="arrow-l"data-direction="reverse" data-transition="slide" >Back</a>
+		<h1>Convert Numbers</h1>
+	</div>
+	<div data-role="content">	
+	<div data-role="fieldcontain">
+        <label for="textinput6"><strong>Enter:</strong></label>
+        <input type="text" name="textinput6" id="textinput6" value="0" onKeyUp="calcNum()"/>
+        </div>
+      <div data-role="fieldcontain">
+        <label for="resultText6"><strong>Result:</strong></label>
+        <input type="text" name="resultText6" id="resultText6" value="0"/>
+      </div>
+      	      <div data-role="fieldcontain">
+        <label for="selectmenu11" class="select"><strong>From:</strong></label>
+        <select name="selectmenu11" class="ui-bar-b" id="selectmenu11" onChange="n_from_change()">
+          <option value="dec">Decimal</option>
+          <option value="hex">Hex</option>
+          <option value="bin">Binary</option>
+          <option value="oct">Octal</option>
+        </select>
+      </div>
+      <div data-role="fieldcontain">
+        <label for="selectmenu12" class="select"><strong>To:</strong></label>
+        <select name="selectmenu12" class="ui-bar-b" id="selectmenu12" onChange="n_to_change()">
+          <option value="dec">Decimal</option>
+          <option value="hex">Hex</option>
+          <option value="bin">Binary</option>
+          <option value="oct">Octal</option>
+        </select>
+      </div>	
+	</div>
+</div>
+
+<div data-role="page" id="page8">
+	<div data-role="header"><a href="#page1" data-role="button" data-icon="arrow-l" data-direction="reverse" data-transition="slide">Back</a>
+		<h1>Convert Memory</h1> <!--Maybe change this to a more useful unit, like energy?-->
+	</div>
+	<div data-role="content">	
+		<div data-role="fieldcontain">
+        <label for="textinput7"><strong>Enter:</strong></label>
+        <input type="text" name="textinput7" id="textinput7" value="0"  />
+        </div>
+      <div data-role="fieldcontain">
+        <label for="resultText7"><strong>Result:</strong></label>
+        <input type="text" name="resultText7" id="resultText7" value="0"/>
+      </div>
+      	      <div data-role="fieldcontain">
+        <label for="selectmenu13" class="select"><strong>From:</strong></label>
+        <select name="selectmenu13" class="ui-bar-b" id="selectmenu13">
+          <option value="mb">Megabyte</option>
+          <option value="kb">Kilobyte</option>
+          <option value="by">Byte</option>
+          <option value="gb">Gigabyte</option>
+          <option value="tb">Terabyte</option>
+          <option value="pb">Petabyte</option>
+        </select>
+      </div>
+      <div data-role="fieldcontain">
+        <label for="selectmenu14" class="select"><strong>To:</strong></label>
+        <select name="selectmenu14" class="ui-bar-b" id="selectmenu14">
+          <option value="mb">Megabyte</option>
+          <option value="kb">Kilobyte</option>
+          <option value="by">Byte</option>
+          <option value="gb">Gigabyte</option>
+          <option value="tb">Terabyte</option>
+          <option value="pb">Petabyte</option>
+        </select>
+      </div>		
+	</div>
+</div>
+    
+<div data-role="page" id="page9">
+	<div data-role="header"><a href="#page1" data-role="button" data-icon="arrow-l" data-direction="reverse" data-transition="slide">Back</a>
+		<h1>Convert Currency</h1>
+	</div>
+	<div data-role="content">	
+<!-- Currency Converter Script - FX-EXCHANGE.COM -->
+<div style="width:248px;border:1px solid #2D6AB4;"><div style="text-align:center;background-color:#2D6AB4;width:100%;font-size:13px;font-weight:bold;height:18px;padding-top:2px;"><a href="http://www.fx-exchange.com/" target="_blank" style="color:#FFFFFF;text-decoration:none;">Currency Converter</a></div><script type="text/javascript" src="http://widget.fx-exchange.com/converter.php?fg=en&ff=USD&ft=EUR&fa=1000&cb=F0F0F0&cc=&fy=1"></script></div>
+<!-- End of Currency Converter Script -->
+	</div>
+    </div>
+<div data-role="page" id="page10">
+  <div data-role="header"><a href="#page1" data-role="button" data-icon="arrow-l" data-direction="reverse" data-transition="slide">Back</a>
+    <h1>Convert Area</h1>
+  </div>
+  <div data-role="content">
+  		<div data-role="fieldcontain">
+        <label for="textinput8"><strong>Enter:</strong></label>
+        <input type="number" name="textinput8" id="textinput8" value="0"  />
+        </div>
+      <div data-role="fieldcontain">
+        <label for="resultText8"><strong>Result:</strong></label>
+        <input type="number" name="resultText8" id="resultText8" value="0"/>
+      </div>
+      	      <div data-role="fieldcontain">
+        <label for="selectmenu15" class="select"><strong>From:</strong></label>
+        <select name="selectmenu15" class="ui-bar-b" id="selectmenu15">
+          <option value="sqm">Square Meter</option>
+          <option value="mh">Metric Hectare</option>
+          <option value="sk">Square Kilometer</option>
+          <option value="si">Square Inches</option>
+          <option value="sf">Square Feet</option>
+          <option value="sm">Square Miles</option>
+          <option value="ac">Acre</option>
+          <option value="uh">US Hectare</option>
+        </select>
+      </div>
+      <div data-role="fieldcontain">
+        <label for="selectmenu16" class="select"><strong>To:</strong></label>
+        <select name="selectmenu16" class="ui-bar-b" id="selectmenu16">
+          <option value="sqm">Square Meter</option>
+          <option value="mh">Metric Hectare</option>
+          <option value="sk">Square Kilometer</option>
+          <option value="si">Square Inches</option>
+          <option value="sf">Square Feet</option>
+          <option value="sm">Square Miles</option>
+          <option value="ac">Acre</option>
+          <option value="uh">US Hectare</option>
+        </select>
+      </div>	
+  </div>
+</div>
+<div id="dialog" title="About/Contact" data-role="page">
+	<div data-role="header"><a href="#page1" data-role="button" data-icon="arrow-l" data-direction="reverse" data-transition="slide">Back</a>
+		<h1>About</h1>
+  </div>
+  <ul>
+    <h2>Unit Converter App</h2>
+    <p>Converts most units of measurement and other units such as currency and number systems.</p>
+    <h4>Author: Karim Oumghar.</h4>
+    <p><b>Version 1.0</b></p>
+    <p><b>Website:</b> <a href="www.simpledevcode.wordpress.com">simpledevcode.wordpress.com</a></p>
+    </ul>
+</div>
+</body>
+</html>
