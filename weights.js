@@ -184,7 +184,7 @@ function calcMass()
 		}
 		if(to_select == "ut")
 		{
-			to_value = from_value / 10000;
+			to_value = from_value / 2000;
 			$('#resultText2').val(to_value);
 		}
 		if(to_select == "mt")

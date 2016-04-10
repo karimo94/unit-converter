@@ -15,5 +15,19 @@ Karim Oumghar
 </author>
 <feature name="http://api.phonegap.com/1.0/network"/>
 <icon src="converter.png" />
-
+<access origin="*" />
+<plugin name="cordova-plugin-whitelist" version="1" />
+<allow-intent href="http://*/*" />
+<allow-intent href="https://*/*" />
+<allow-intent href="tel:*" />
+<allow-intent href="sms:*" />
+<allow-intent href="mailto:*" />
+<allow-intent href="geo:*" />
+<platform name="android">
+    <allow-intent href="market:*" />
+</platform>
+<platform name="ios">
+    <allow-intent href="itms:*" />
+    <allow-intent href="itms-apps:*" />
+</platform>
 </widget>
