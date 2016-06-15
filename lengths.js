@@ -300,7 +300,7 @@ function calcLen()
 		}
 		if(to_select == "km")
 		{
-			to_value = from_value / 0.001;
+			to_value = from_value * 0.001;
 			$('#resultText').val(to_value);
 		}
 		if(to_select == "m")
