@@ -1,0 +1,12 @@
+CACHE MANIFEST
+
+CACHE:
+/div/page9
+https://www.transfermate.com/en/exchange_rates_api.asp
+
+CACHE:
+index.html
+
+#Require user to be online to view
+NETWORK:
+*

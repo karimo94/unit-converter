@@ -105,7 +105,7 @@ function calcTime()
 	}
 	if(from_select == "secs")
 	{
-		if(to_select == "hours")
+		if(to_select == "hrs")
 		{
 			to_value = from_value / 3600;
 			$('#resultText3').val(to_value);
@@ -293,7 +293,7 @@ function calcTime()
 	}
 	if(from_select == "wk")
 	{
-		if(to_select == "hours")
+		if(to_select == "hrs")
 		{
 			to_value = from_value * 168;
 			$('#resultText3').val(to_value);
@@ -340,7 +340,7 @@ function calcTime()
 	}
 	if(from_select == "mo")
 	{
-		if(to_select == "hours")
+		if(to_select == "hrs")
 		{
 			to_value = from_value * 730.001;
 			$('#resultText3').val(to_value);
@@ -387,7 +387,7 @@ function calcTime()
 	}
 	if(from_select == "yr")
 	{
-		if(to_select == "hours")
+		if(to_select == "hrs")
 		{
 			to_value = from_value * 8760;
 			$('#resultText3').val(to_value);

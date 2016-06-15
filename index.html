@@ -1,5 +1,5 @@
 <!DOCTYPE html> 
-<html>
+<html manifest="cache.manifest">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width" />
@@ -13,9 +13,9 @@
 <script type="text/javascript" src="lengths.js"></script>
 <script type="text/javascript" src="weights.js"></script>
 <script type="text/javascript" src="times.js"></script>
-<script type="text/javascript" src="volumes.js"></script>
 <script type="text/javascript" src="temps.js"></script>
 <script type="text/javascript" src="nums.js"></script>
+<script type="text/javascript" src="volumes.js"></script>
 <script type="text/javascript" src="mems.js"></script>
 <script type="text/javascript" src="areas.js"></script>
 
@@ -46,13 +46,12 @@ body
 }
 @media screen and (min-width: 240px) and (max-width: 320px) 
 {
-	html
+	h1
 	{
 		font-size: 50%;
 	}
 }
 </style>
-
 <body> 
 <div class="page1" id="page1" style="background-image:url(stripes.jpg)" data-role="page" data-theme="d">
 	<div data-role="header"><img src="arrows.png" width="45" height="45" style="position:absolute;"><div style="float:right; padding-right:10px; padding-top:5px;"><a href="#dialog" data-role="button" data-icon="info" data-iconpos="notext"></a></div>
@@ -318,7 +317,7 @@ body
 	<div data-role="content">	
 		<div data-role="fieldcontain">
         <label for="textinput7"><strong>Enter:</strong></label>
-        <input type="text" name="textinput7" id="textinput7" value="0"  />
+        <input type="text" name="textinput7" id="textinput7" value="0" onKeyUp="calcMem()"/>
         </div>
       <div data-role="fieldcontain">
         <label for="resultText7"><strong>Result:</strong></label>
@@ -326,24 +325,32 @@ body
       </div>
       	      <div data-role="fieldcontain">
         <label for="selectmenu13" class="select"><strong>From:</strong></label>
-        <select name="selectmenu13" class="ui-bar-b" id="selectmenu13">
+        <select name="selectmenu13" class="ui-bar-b" id="selectmenu13" onChange="m_from_change()">
           <option value="mb">Megabyte</option>
           <option value="kb">Kilobyte</option>
           <option value="by">Byte</option>
           <option value="gb">Gigabyte</option>
           <option value="tb">Terabyte</option>
           <option value="pb">Petabyte</option>
+          <option value="mbi">Megabit</option>
+          <option value="kbi">Kilobit</option>
+          <option value="bit">Bit</option>
+          <option value="gbi">Gigabit</option>
         </select>
       </div>
       <div data-role="fieldcontain">
         <label for="selectmenu14" class="select"><strong>To:</strong></label>
-        <select name="selectmenu14" class="ui-bar-b" id="selectmenu14">
+        <select name="selectmenu14" class="ui-bar-b" id="selectmenu14" onChange="m_to_change()">
           <option value="mb">Megabyte</option>
           <option value="kb">Kilobyte</option>
           <option value="by">Byte</option>
           <option value="gb">Gigabyte</option>
           <option value="tb">Terabyte</option>
           <option value="pb">Petabyte</option>
+          <option value="mbi">Megabit</option>
+          <option value="kbi">Kilobit</option>
+          <option value="bit">Bit</option>
+          <option value="gbi">Gigabit</option>
         </select>
       </div>		
 	</div>
@@ -352,9 +359,27 @@ body
 <div data-role="page" id="page9">
 	<div data-role="header"><a href="#page1" data-role="button" data-icon="arrow-l" data-direction="reverse" data-transition="slide">Back</a>
 		<h1>Convert Currency</h1>
-	</div>
-	<div data-role="content">	
-            <div id="powerd"><a href="http://www.transfermate.com/" target="_blank" id="tm_add146" class="tm_add146"></a></div><script src="https://www.transfermate.com/en/exchange_rates_api.asp" type="text/javascript"></script>
+	</div>	
+    <h2 id="status"></h2>
+                <div id="powerd"><a href="http://www.transfermate.com/" target="_blank" id="tm_add146" class="tm_add146"></a></div><script src="https://www.transfermate.com/en/exchange_rates_api.asp" type="text/javascript"></script><noscript><br/><span style="color: red;">Please enable your javascript.</span></noscript>
+                
+            <button id="reload" onClick="location.reload()">Reload</button>       
+    <script type="text/javascript">
+	$('#page9').bind('pageinit', function(event) {
+        if(!navigator.onLine)
+		{
+			$('#status').text("No internet connection!");
+		}
+    });
+	//try to reload
+	$(function(){
+    $('reload').on('click',function(){
+        //var r= $('<input type="button" value="new button"/>');
+		location.reload();
+    });
+});
+	</script>
+    
             <!--<iframe id="tmcmini" src="http://themoneyconverter.com/MoneyConverter.aspx?from=USD&amp;to=EUR" style="width: 175px; height: 202px; border: none; background-color: #ffffff;" scrolling="no" marginwidth="0" marginheight="0"></iframe>
  End of Currency Converter Script -->
 	</div>
@@ -366,7 +391,7 @@ body
   <div data-role="content">
   		<div data-role="fieldcontain">
         <label for="textinput8"><strong>Enter:</strong></label>
-        <input type="number" name="textinput8" id="textinput8" value="0"  />
+        <input type="number" name="textinput8" id="textinput8" value="0" onKeyUp="calcArea()"/>
         </div>
       <div data-role="fieldcontain">
         <label for="resultText8"><strong>Result:</strong></label>
@@ -374,28 +399,26 @@ body
       </div>
       	      <div data-role="fieldcontain">
         <label for="selectmenu15" class="select"><strong>From:</strong></label>
-        <select name="selectmenu15" class="ui-bar-b" id="selectmenu15">
+        <select name="selectmenu15" class="ui-bar-b" id="selectmenu15" onChange="a_from_change()">
           <option value="sqm">Square Meter</option>
-          <option value="mh">Metric Hectare</option>
+          <option value="mh">Hectare</option>
           <option value="sk">Square Kilometer</option>
           <option value="si">Square Inches</option>
           <option value="sf">Square Feet</option>
           <option value="sm">Square Miles</option>
           <option value="ac">Acre</option>
-          <option value="uh">US Hectare</option>
         </select>
       </div>
       <div data-role="fieldcontain">
         <label for="selectmenu16" class="select"><strong>To:</strong></label>
-        <select name="selectmenu16" class="ui-bar-b" id="selectmenu16">
+        <select name="selectmenu16" class="ui-bar-b" id="selectmenu16" onChange="a_to_change()">
           <option value="sqm">Square Meter</option>
-          <option value="mh">Metric Hectare</option>
+          <option value="mh">Hectare</option>
           <option value="sk">Square Kilometer</option>
           <option value="si">Square Inches</option>
           <option value="sf">Square Feet</option>
           <option value="sm">Square Miles</option>
           <option value="ac">Acre</option>
-          <option value="uh">US Hectare</option>
         </select>
       </div>	
   </div>
