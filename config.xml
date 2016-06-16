@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns = "http://www.w3.org/ns/widgets"
     xmlns:gap = "http://phonegap.com/ns/1.0"
-    id        = "com.phonegap.example"
+    id        = "com.karimo.unitconv"
     version   = "1.0.0">
 
 <name>Unit Converter</name>
@@ -14,10 +14,12 @@ A unit converter app for Android.
 Karim Oumghar
 </author>
 <feature name="http://api.phonegap.com/1.0/network"/>
+
 <icon src="converter.png" />
 
-<preference name="AutoHideSplashScreen" value="false" />
-
+<gap:plugin name="org.apache.cordova.splashscreen" />
+<gap:splash src="splashscreen.jpg"/>
+<preference name="SplashScreenDelay" value="3700" />
 
 <access origin="*" />
 <plugin name="cordova-plugin-whitelist" version="1" />
