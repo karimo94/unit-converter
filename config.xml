@@ -20,7 +20,7 @@ Karim Oumghar
 <gap:plugin name="org.apache.cordova.splashscreen" />
 <gap:splash src="splashscreen.jpg"/>
 <preference name="SplashScreenDelay" value="3700" />
-<preference name="android-targetSdkVersion" value="12" />
+<preference name="android-targetSdkVersion" value="29" />
 <access origin="*" />
 <plugin name="cordova-plugin-whitelist" version="1" />
 <allow-intent href="http://*/*" />
